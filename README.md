@@ -1,2 +1,2 @@
 # leetcodeByGolang
-尝试用golang刷一遍leetcode
+尝试用golang刷一下leetcode
