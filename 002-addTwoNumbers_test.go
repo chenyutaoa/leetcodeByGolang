@@ -51,6 +51,92 @@ func Test_addTwoNumbers(t *testing.T) {
 				Val:  1,
 				Next: &ListNode{Val: 1},
 			}}},
+		{"", args{l1: &ListNode{
+			Val: 2,
+			Next: &ListNode{
+				Val: 4,
+				Next: &ListNode{
+					Val:  3,
+					Next: nil,
+				},
+			},
+		}, l2: &ListNode{
+			Val: 5,
+			Next: &ListNode{
+				Val: 6,
+				Next: &ListNode{
+					Val:  4,
+					Next: nil,
+				},
+			},
+		}}, &ListNode{
+			Val: 7,
+			Next: &ListNode{
+				Val: 0,
+				Next: &ListNode{
+					Val:  8,
+					Next: nil,
+				},
+			},
+		}},
+		{"", args{l1: &ListNode{
+			Val: 9,
+			Next: &ListNode{
+				Val: 9,
+				Next: &ListNode{
+					Val:  9,
+					Next: &ListNode{
+						Val:  9,
+						Next: &ListNode{
+							Val:  9,
+							Next: &ListNode{
+								Val:  9,
+								Next: &ListNode{
+									Val:  9,
+									Next: nil,
+								},
+							},
+						},
+					},
+				},
+			},
+		}, l2: &ListNode{
+			Val: 9,
+			Next: &ListNode{
+				Val: 9,
+				Next: &ListNode{
+					Val:  9,
+					Next: &ListNode{
+						Val:  9,
+						Next: nil,
+					},
+				},
+			},
+		}}, &ListNode{
+			Val: 8,
+			Next: &ListNode{
+				Val: 9,
+				Next: &ListNode{
+					Val:  9,
+					Next: &ListNode{
+						Val:  9,
+						Next: &ListNode{
+							Val:  0,
+							Next: &ListNode{
+								Val:  0,
+								Next: &ListNode{
+									Val:  0,
+									Next: &ListNode{
+										Val:  1,
+										Next: nil,
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+		}},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

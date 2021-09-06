@@ -17,32 +17,94 @@ package leetcode
 //  2 4 6
 //+ 5 6 4
 //= 7 0 0 1
+type List struct {
+	headNode *ListNode //头节点
+	curNode  *ListNode //当前节点
+}
+
+func (this *List) ISEmpty() bool {
+
+	//判断单链表是否为空，只需要判断头节点是否为空即可
+	if this.headNode == nil {
+		return true
+	} else {
+		return false
+	}
+}
+
+//func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
+//	s := 0
+//	l3 := &List{}
+//	for l1 != nil || l2 != nil {
+//		v1, v2, v3 := 0, 0, 0
+//		if l1 != nil {
+//			v1 = l1.Val
+//			l1 = l1.Next
+//		}
+//		if l2 != nil {
+//			v2 = l2.Val
+//			l2 = l2.Next
+//		}
+//		if v1+v2+s >= 10 {
+//			v3 = (v1 + v2 + s) % 10
+//			s = 1
+//		} else {
+//			v3 = v1 + v2 + s
+//			s = 0
+//		}
+//		if l3.ISEmpty() {
+//			l3 = &List{headNode: &ListNode{
+//				Val:  v3,
+//				Next: nil,
+//			}}
+//			l3.curNode = l3.headNode
+//		} else {
+//			l3.curNode.Next = &ListNode{
+//				Val:  v3,
+//				Next: nil,
+//			}
+//			l3.curNode = l3.curNode.Next
+//		}
+//	}
+//	if s == 1 {
+//		l3.curNode.Next = &ListNode{
+//			Val:  1,
+//			Next: nil,
+//		}
+//	}
+//	return l3.headNode
+//}
 
 func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
-	//s := 0
-	//l3 := &ListNode{Val: 0}
-	//var result *ListNode
-	//for l1.Next != nil || l2.Next != nil {
-	//	l3.Next = &ListNode{Val: 0}
-	//	if l1.Next == nil && l2.Next != nil {
-	//		l1.Next = &ListNode{Val: 0}
-	//	}
-	//	if l1.Next != nil && l2.Next == nil {
-	//		l2.Next = &ListNode{Val: 0}
-	//	}
-	//	v := l1.Val + l2.Val + s
-	//	s = 0
-	//	if v > 10 {
-	//		l3.Val, s = v % 10,v/10
-	//	} else {
-	//		l3.Val = v
-	//	}
-	//	l1 = l1.Next
-	//	l2 = l2.Next
-	//	l3 = l3.Next
-	//	if l1.Next == nil && l2.Next == nil && s == 10 {
-	//		l3.Next = &ListNode{Val: 1}
-	//	}
-	//}
-	return l1
+	s := 0
+	l3 := new(ListNode)
+	head:= l3
+	for l1 != nil || l2 != nil {
+		v1, v2, v3 := 0, 0, 0
+		if l1 != nil {
+			v1 = l1.Val
+			l1 = l1.Next
+		}
+		if l2 != nil {
+			v2 = l2.Val
+			l2 = l2.Next
+		}
+		if v1+v2+s >= 10 {
+			v3 = (v1 + v2 + s) % 10
+			s = 1
+		} else {
+			v3 = v1 + v2 + s
+			s = 0
+		}
+		l3.Next = new(ListNode)
+		l3 = l3.Next
+		l3.Val = v3
+	}
+	if s == 1 {
+		l3.Next = &ListNode{
+			Val:  1,
+			Next: nil,
+		}
+	}
+	return head.Next
 }
