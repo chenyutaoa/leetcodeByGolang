@@ -14,8 +14,8 @@ import (
 //
 //返回规则如下：
 //
-//如果 version1 > version2 返回 1，
-//如果 version1 < version2 返回 -1，
+//如果version1>version2返回1，
+//如果version1<version2 返回 -1，
 //除此之外返回 0。
 //
 //来源：力扣（LeetCode）
