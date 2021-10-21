@@ -28,12 +28,14 @@ func myAtoi(s string) int {
 	res := 0
 	b := false
 	i, l := 0, len(s)
+	//过滤空格
 	for s[i] == ' ' {
 		i++
 		if i == l {
 			return res
 		}
 	}
+	//判断正负
 	if s[i] == '-' || s[i] == '+' {
 		if s[i] == '-' {
 			b = true
@@ -42,15 +44,12 @@ func myAtoi(s string) int {
 	}
 	for ; i < len(s); i++ {
 		r := s[i]
+		//若非数组即返回
 		if r < '0' || r > '9' {
 			break
 		}
-		if res < 0 {
-			res = res*10 - int(r-'0')
-		} else {
-			res = res*10 + int(r-'0')
-		}
-
+		res = res*10 + int(r-'0')
+		//判断是否越界
 		if res > math.MaxInt32 {
 			if b {
 				return math.MinInt32
